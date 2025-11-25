@@ -295,9 +295,6 @@ select
 	from spotify;
 ```
 
-			
-###/* End of Project*/
-
 
 ## Query Optimization Technique 
 
@@ -346,9 +343,12 @@ The query retrieved tracks based on the `artist` column, and the performance met
       ![Performance Graph](https://github.com/najirh/najirh-Spotify-Data-Analysis-using-SQL/blob/main/spotify_graphical%20view%203.png)
       ![Performance Graph](https://github.com/najirh/najirh-Spotify-Data-Analysis-using-SQL/blob/main/spotify_graphical%20view%202.png)
       ![Performance Graph](https://github.com/najirh/najirh-Spotify-Data-Analysis-using-SQL/blob/main/spotify_graphical%20view%201.png)
+  
 
 This optimization shows how indexing can drastically reduce query time, improving the overall performance of our database operations in the Spotify project.
 ---
+
+## End of Project
 
 ## Technology Stack
 - **Database**: PostgreSQL
