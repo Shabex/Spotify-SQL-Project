@@ -255,5 +255,22 @@ select
 		sum(likes) over(partition by track order by views desc)
 	from spotify;
 
+-- Query Optimization
+explain analyze  
+select 
+		artist,
+		track,
+		views
+	from spotify
+	where artist = 'Gorillaz'
+		and
+		most_playedon = 'Youtube'
+	order by stream desc 
+	limit 25;
+
+-- Create index
+create index artist_index on spotify(artist);
+
 			
 /* End of Project*/
+
