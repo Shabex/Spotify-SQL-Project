@@ -305,17 +305,32 @@ To improve query performance, we carried out the following optimization process:
 
 - **Initial Query Performance Analysis Using `EXPLAIN`**
     - We began by analyzing the performance of a query using the `EXPLAIN` function.
-    - The query retrieved tracks based on the `artist` column, and the performance metrics were as follows:
-        - Execution time (E.T.): **7 ms**
-        - Planning time (P.T.): **0.17 ms**
-    - Below is the **screenshot** of the `EXPLAIN` result before optimization:
-     ![EXPLAIN Before Index]()
+
+```sql
+-- Query Optimization
+explain analyze  
+select 
+		artist,
+		track,
+		views
+	from spotify
+	where artist = 'Gorillaz'
+		and
+		most_playedon = 'Youtube'
+	order by stream desc 
+	limit 25;
+```
+The query retrieved tracks based on the `artist` column, and the performance metrics were as follows:
+        - Execution time (E.T.): **10 ms**
+        - Planning time (P.T.): **1.2ms**
+    - Below is the **screenshot** of the `EXPLAIN` result before optimisation:
+     ![EXPLAIN Before Index](https://github.com/Shabex/Spotify-SQL-Project/blob/main/Before%20%20Query%20Optimization%20.png)
 
 - **Index Creation on the `artist` Column**
     - To optimize the query performance, we created an index on the `artist` column. This ensures faster retrieval of rows where the artist is queried.
     - **SQL command** for creating the index:
       ```sql
-      CREATE INDEX idx_artist ON spotify_tracks(artist);
+      create index artist_index on spotify(artist);
       ```
 
 - **Performance Analysis After Index Creation**
